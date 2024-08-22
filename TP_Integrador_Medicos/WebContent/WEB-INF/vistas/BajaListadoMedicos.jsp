@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Baja y Listado de Médicos</title>
+    <title>Baja y Listado de MÃ©dicos</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -109,7 +109,7 @@
 </head>
 <body>
     <div class="header">
-        <h1>Baja y Listado de Médicos</h1>
+        <h1>Baja y Listado de MÃ©dicos</h1>
     </div>
     <div class="container">
         <div class="content">
@@ -126,7 +126,7 @@
                             </c:when>
                             <c:otherwise>
                                 <form action="buscarMedicoDinamico.html" method="GET">
-                                    Buscar médico por Nombre o Apellido: 
+                                    Buscar mÃ©dico por Nombre o Apellido: 
                                     <input type="text" required name="txtNombre">
                                     <input type="submit" name="btnBuscar" value="Buscar">
                                 </form>
@@ -137,8 +137,8 @@
                         <form action="listarMedicosFiltro.html" method="GET">
                             Filtrar por: 
                             <select name="ddlFiltroEstado">
-                                <option value="true" ${ddlFiltroEstado == 'true' ? 'selected' : ''}>Médicos Disponibles</option>
-                                <option value="false" ${ddlFiltroEstado == 'false' ? 'selected' : ''}>Médicos No Disponibles</option>
+                                <option value="true" ${ddlFiltroEstado == 'true' ? 'selected' : ''}>MÃ©dicos Disponibles</option>
+                                <option value="false" ${ddlFiltroEstado == 'false' ? 'selected' : ''}>MÃ©dicos No Disponibles</option>
                             </select>
                             <input type="submit" name="btnFiltrar" value="Filtrar">
                         </form>
@@ -147,7 +147,7 @@
                 			<input type="submit" name="btnBuscar" value="Borrar Filtros">
             			</form>
                     </td>
-                    <td class="columnaLateral center"><a href="inicio.html"><b>Cerrar Sesión</b></a></td>
+                    <td class="columnaLateral center"><a href="inicio.html"><b>Cerrar SesiÃ³n</b></a></td>
                 </tr>
             </table>
 
@@ -160,12 +160,12 @@
                         <th>Nombre</th>
                         <th>Apellido</th>
                         <th>Fecha de Nacimiento</th>
-                        <th>Dirección</th>
+                        <th>DirecciÃ³n</th>
                         <th>Localidad</th>
                         <th>Sexo</th>
                         <th>Especialidad</th>
-                        <th>Teléfono</th>
-                        <th>Días que Trabaja</th>
+                        <th>TelÃ©fono</th>
+                        <th>DÃ­as que Trabaja</th>
                         <th>Horario de Entrada</th>
                         <th>Horario de Salida</th>
                         <th>Usuario</th>
@@ -193,13 +193,13 @@
                                     <c:when test="${medico.estado}">
                                         <form action="${pageContext.request.contextPath}/bajaMedico.html" method="post">
                                             <input type="hidden" name="legajo" value="${medico.legajo}" />
-                                            <input type="submit" onclick="return confirm('¿Seguro que desea dar de baja este médico?');" value="Baja Lógica" />
+                                            <input type="submit" onclick="return confirm('Â¿Seguro que desea dar de baja este mÃ©dico?');" value="Baja LÃ³gica" />
                                         </form>
                                     </c:when>
                                     <c:otherwise>
                                         <form action="${pageContext.request.contextPath}/cambiarAltaMedico.html" method="post">
                                             <input type="hidden" name="legajo" value="${medico.legajo}" />
-                                            <input type="submit" onclick="return confirm('¿Seguro que desea dar de alta este médico?');" value="Alta Lógica" />
+                                            <input type="submit" onclick="return confirm('Â¿Seguro que desea dar de alta este mÃ©dico?');" value="Alta LÃ³gica" />
                                         </form>
                                     </c:otherwise>
                                 </c:choose>
@@ -209,6 +209,8 @@
                 </table>
             </div>
 	<c:choose>
+    <c:when test="${not noResultados}">
+        <c:choose>
 		<c:when test="${busqueda}">
 		<div class="pagination">
                 <c:forEach var="i" begin="0" end="${totalPages - 1}">
@@ -231,10 +233,17 @@
             </div>
 		</c:otherwise>
 	</c:choose>
+    </c:when>
+    <c:otherwise>
+        <div class="alert alert-warning">
+            ${errorBusquedaNula}
+        </div>
+    </c:otherwise>
+</c:choose>
         </div>
     </div>
     <div class="footer">
-        <p>&copy; 2024 Sistema de Gestión Médica</p>
+        <p>&copy; 2024 Sistema de GestiÃ³n MÃ©dica</p>
     </div>
 </body>
 </html>
