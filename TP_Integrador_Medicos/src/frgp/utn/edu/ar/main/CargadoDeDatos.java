@@ -15,7 +15,7 @@ import frgp.utn.edu.ar.negocioImp.PacienteNegocio;
 import frgp.utn.edu.ar.negocioImp.TurnosNegocio;
 import frgp.utn.edu.ar.negocioImp.UsuarioNegocio;
 
-public class App 
+public class CargadoDeDatos 
 {
     public static void main( String[] args )
     {

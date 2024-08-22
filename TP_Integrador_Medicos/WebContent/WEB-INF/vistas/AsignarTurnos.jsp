@@ -215,7 +215,7 @@
                 <td class="columnaCentral">
                     <select id="ddlMedico" name="ddlMedico">
                         <c:forEach items="${medicos}" var="medico">
-                            <option value="${medico.legajo}">${medico.nombre} ${medico.apellido}</option>
+                            <option value="${medico.legajo}">${medico.legajo} - ${medico.nombre} ${medico.apellido}</option>
                         </c:forEach>
                     </select>
                 </td>

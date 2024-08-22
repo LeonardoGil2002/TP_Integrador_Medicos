@@ -200,7 +200,10 @@ public class ControladorMedicos {
         this.medico = this.medicoNegocio.ReadOne(legajo);
         if (medico != null) {
         	this.medico.setEstado(false);
-            this.medicoNegocio.Update(medico);
+            this.medicoNegocio.Update(this.medico);
+            this.usuario = this.usuarioNegocio.ReadOne(this.medico.getUsuario().getNombre_usuario());
+            this.usuario.setEstado(false);
+            this.usuarioNegocio.Update(this.usuario);
         }
        
         MV.addObject("mensaje","Se ha eliminado el medico exitosamente");
@@ -220,6 +223,9 @@ public class ControladorMedicos {
         if (medico != null) {
         	this.medico.setEstado(true);
             this.medicoNegocio.Update(medico);
+            this.usuario = this.usuarioNegocio.ReadOne(this.medico.getUsuario().getNombre_usuario());
+            this.usuario.setEstado(true);
+            this.usuarioNegocio.Update(this.usuario);
         }
         
         MV.addObject("mensaje","Se ha dado de alta al medico exitosamente");

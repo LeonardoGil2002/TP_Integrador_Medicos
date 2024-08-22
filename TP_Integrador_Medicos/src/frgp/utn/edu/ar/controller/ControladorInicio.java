@@ -122,7 +122,7 @@ public class ControladorInicio {
 			}
 		}
 		else {
-			mensaje = "El usuario ingresado no existe";
+			mensaje = "El usuario ingresado no existe o fue dado de baja";
 		}
 		
 		
