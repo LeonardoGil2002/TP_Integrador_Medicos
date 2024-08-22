@@ -174,12 +174,22 @@ public class ControladorMedicos {
         int totalPages = (int) Math.ceil((double) totalItems / size);
         totalPages = totalPages == 0 ? 1 : totalPages;
 
+        String mensaje = "";
+        if(medicos.isEmpty()) {
+        	mensaje = "No se encontraron resultados para la búsqueda.";
+            MV.addObject("noResultados", true);  // Indica que no hay resultados
+        } else {
+            MV.addObject("noResultados", false); // Indica que hay resultados
+        }
+        
+        
         MV.addObject("medicos", medicos);
         MV.addObject("totalPages", totalPages);
         MV.addObject("currentPage", page);
         MV.addObject("ddlFiltroEstado", ddlFiltroEstado);
         MV.addObject("filtro", false);
         MV.addObject("busqueda", false);
+        MV.addObject("errorBusquedaNula", mensaje);
         MV.setViewName("BajaListadoMedicos");
         return MV;
     }
@@ -393,11 +403,20 @@ public class ControladorMedicos {
         	page = 0;
         }
         
+        String mensaje = "";
+        if(medicos.isEmpty()) {
+        	mensaje = "No se encontraron resultados para la búsqueda.";
+            MV.addObject("noResultados", true);  // Indica que no hay resultados
+        } else {
+            MV.addObject("noResultados", false); // Indica que hay resultados
+        }
+        
         MV.addObject("medicos", medicos);
         MV.addObject("busqueda", true);
         MV.addObject("filtro", false);
         MV.addObject("totalPages", totalPages);
         MV.addObject("currentPage", page);
+        MV.addObject("errorBusquedaNula", mensaje);
         MV.setViewName("BajaListadoMedicos");
         return MV;
     }
@@ -418,13 +437,21 @@ public class ControladorMedicos {
         if(page > totalPages) {
         	page = 0;
         }
-        
+        String mensaje = "";
+        if(medicos.isEmpty()) {
+        	mensaje = "No se encontraron resultados para la búsqueda.";
+            MV.addObject("noResultados", true);  // Indica que no hay resultados
+        } else {
+            MV.addObject("noResultados", false); // Indica que hay resultados
+        }
+	    
         MV.addObject("medicos", medicos);
         MV.addObject("totalPages", totalPages);
         MV.addObject("currentPage", page);
         MV.addObject("busqueda", false);
         MV.addObject("filtro", true);
         MV.addObject("ddlFiltroEstado", EstadoFiltro);
+        MV.addObject("errorBusquedaNula", mensaje);
         MV.setViewName("BajaListadoMedicos");
         return MV;
     }
