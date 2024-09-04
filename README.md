@@ -2,7 +2,7 @@ Aplicación web para un consultorio médico. Contiene dos tipos de usuario: el A
 
 Permisos del admin:
 - Alta, baja, modificación y listado de médicos y pacientes
-- Baja y listado de pacientes
+- Baja y listado de especialidades de los médicos
 - Asignación de turnos a médicos
 - Generación de reportes
 
